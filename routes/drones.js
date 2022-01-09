@@ -11,7 +11,8 @@ router.get('/drones', (req, res, next) => {
   Drone.find()
   .then(drone => {
     res.render('drones/list', {
-      drone
+      drone,
+      css: ["droneList"]
     })
   })
   .catch(e => console.error(e));
@@ -20,7 +21,9 @@ router.get('/drones', (req, res, next) => {
 router.get('/drones/create', (req, res, next) => {
   // Iteration #3: Add a new drone
   // ... your code here
-  res.render('drones/create-form.hbs');
+  res.render('drones/create-form.hbs', {
+    css: ["forms"]
+  });
 });
 
 router.post('/drones/create', async (req, res, next) => {
@@ -39,7 +42,10 @@ router.get('/drones/:id/edit', (req, res, next) => {
   // ... your code here
   Drone.findById(req.params.id)
   .then((drone) => {
-    res.render('drones/update-form.hbs', { droneToEdit: drone });
+    res.render('drones/update-form.hbs', { 
+      droneToEdit: drone,
+      css: ["forms"]
+     });
   })
   .catch(next);
 });

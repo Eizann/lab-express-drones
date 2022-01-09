@@ -1,11 +1,21 @@
 <h2>Available drones</h2>
 
-{{#each drone}}
-    <p>Name: {{this.name}}</p>
-    <p>Propellers: {{this.propellers}}</p>
-    <p>Max speed: {{this.maxSpeed}}</p>
-    <a href="/drones/{{this._id}}/edit"><i class="fas fa-edit"></i></a>
-    <form action="/drones/{{this._id}}/delete" method="post" class="form">
-    <button><i class="fas fa-trash-alt"></i></button>
-    </form>
-{{/each}}
+<div class="container">
+  {{#each drone}}
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <p>Name: {{this.name}}</p>
+                <p>Propellers: {{this.propellers}}</p>
+                <p>Max speed: {{this.maxSpeed}}</p>
+                <div class="deleteAndEditButtons">
+                    <a href="/drones/{{this._id}}/edit" class="editButton"><i class="fas fa-edit"></i></a>
+                    <form action="/drones/{{this._id}}/delete" method="post" class="form">
+                        <button><i class="fas fa-trash-alt"></i></button>
+                     </form>
+                 </div>  
+            </li>
+        </ul>
+    </div>
+  {{/each}}
+</div>
